@@ -6,11 +6,24 @@ import About from "./Pages/About";
 import Experience from "./Pages/Experience";
 import Education from "./Pages/Education";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { AiFillHome, AiFillHeart, AiFillAppstore } from "react-icons/ai";
+import { IoDocument } from "react-icons/io5";
+import { MdOutlineWork } from "react-icons/md";
+import { RiMessage3Fill } from "react-icons/ri";
 function App() {
   const [pagesCarousal, setPagesCarousal] = useState([
-    Education,
     About,
+    Education,
     Experience,
+  ]);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [docItems, setDocItems] = useState([
+    { isActive: true, icon: AiFillHome, lable: "About me" },
+    { isActive: false, icon: IoDocument, lable: "Education" },
+    { isActive: false, icon: MdOutlineWork, lable: "Experience" },
+    { isActive: false, icon: AiFillAppstore, lable: "Projects" },
+    { isActive: false, icon: AiFillHeart, lable: "Skills" },
+    { isActive: false, icon: RiMessage3Fill, lable: "Contact" },
   ]);
   function blbShapeGen() {
     let num = `${Math.ceil(Math.random() * 100)}% ${Math.ceil(
@@ -62,7 +75,16 @@ function App() {
     //   );
     // });
   }
-  function handleSlideChange(Slide) {}
+  function handleSlideChange(Slide) {
+    console.log(Slide.index);
+    setDocItems(
+      docItems.map((el, i) =>
+        i == Slide.index
+          ? { ...el, isActive: true }
+          : { ...el, isActive: false }
+      )
+    );
+  }
   useEffect(() => {
     blobsLogic();
 
@@ -71,6 +93,11 @@ function App() {
   return (
     <div className="app  relative  flex h-screen w-screen items-center justify-center font-Poppins">
       <Splide
+        options={{
+          type: "loop",
+          pagination: false,
+          focus: activeSlide,
+        }}
         onMove={(Slide) => handleSlideChange(Slide)}
         className="mySwiper relative z-10 flex  h-full w-full items-center justify-center space-x-8 bg-transparent  "
       >
@@ -80,7 +107,12 @@ function App() {
           </SplideSlide>
         ))}
       </Splide>
-      <Dock />
+      <Dock
+        docItems={docItems}
+        setDocItems={setDocItems}
+        activeSlide={activeSlide}
+        setActiveSlide={setActiveSlide}
+      />
       <div className="bolobs">
         <div className="blob1"></div>
         <div className="blob2"></div>
