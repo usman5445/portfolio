@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-
-import "./App.css";
+import "@splidejs/react-splide/css";
+import "./index.css";
 import Dock from "./Components/Dock";
 import About from "./Pages/About";
 import Experience from "./Pages/Experience";
 import Education from "./Pages/Education";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 function App() {
   const [pagesCarousal, setPagesCarousal] = useState([
     Education,
@@ -61,6 +62,7 @@ function App() {
     //   );
     // });
   }
+  function handleSlideChange(Slide) {}
   useEffect(() => {
     blobsLogic();
 
@@ -68,23 +70,16 @@ function App() {
   }, []);
   return (
     <div className="app  relative  flex h-screen w-screen items-center justify-center font-Poppins">
-      <div className=" relative  flex h-full w-screen items-center justify-center space-x-8">
-        <div className="flex items-center justify-center">
-          {pagesCarousal.map((Page, index) => {
-            return index == 0 ? <Page /> : null;
-          })}
-        </div>
-        <div className="relative flex h-full w-4/5 items-center justify-center">
-          {pagesCarousal.map((Page, index) => {
-            return index == 1 ? <Page /> : null;
-          })}
-        </div>
-        <div className="flex items-center justify-center">
-          {pagesCarousal.map((Page, index) => {
-            return index == 2 ? <Page /> : null;
-          })}
-        </div>
-      </div>
+      <Splide
+        onMove={(Slide) => handleSlideChange(Slide)}
+        className="mySwiper relative z-10 flex  h-full w-full items-center justify-center space-x-8 bg-transparent  "
+      >
+        {pagesCarousal.map((Page, index) => (
+          <SplideSlide className=" flex items-center  justify-center bg-transparent   ">
+            <Page />
+          </SplideSlide>
+        ))}
+      </Splide>
       <Dock />
       <div className="bolobs">
         <div className="blob1"></div>

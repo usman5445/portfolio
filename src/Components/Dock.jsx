@@ -33,7 +33,7 @@ function Dock() {
   return (
     <div
       ref={dockRef}
-      className="fixed bottom-8 flex h-10 w-fit items-end justify-around  space-x-6 rounded-[60px_60px_20px_20px]  border border-white/70  bg-white/30 px-4  backdrop-blur-2xl  "
+      className="fixed bottom-8 z-20 flex h-10 w-fit items-end justify-around  space-x-6 rounded-[60px_60px_20px_20px]  border border-white/70  bg-white/30 px-4  backdrop-blur-2xl  "
     >
       {docItems.map((item, index) => {
         return (
