@@ -9,8 +9,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import Context, { ContextStore } from "./Context";
 function App() {
-  const { activeSlide, setActiveSlide, docItems, setDocItems } =
-    useContext(ContextStore);
+  const { activeSlide, docItems } = useContext(ContextStore);
   const [pagesCarousal, setPagesCarousal] = useState([
     About,
     Education,

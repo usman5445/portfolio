@@ -5,8 +5,7 @@ import { ContextStore } from "../Context";
 
 function Dock() {
   const dockRef = useRef();
-  const { activeSlide, setActiveSlide, docItems, setDocItems } =
-    useContext(ContextStore);
+  const { activeSlide, docItems } = useContext(ContextStore);
   async function handleDockClick(index) {
     setDocItems(
       docItems.map((item, i) => {
