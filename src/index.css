@@ -28,8 +28,6 @@ body {
   transition: width 1s ease, height 1s ease, border-radius 0.2s ease,
     right 1s ease, top 1s ease;
   border-radius: var(--blbShape);
-
-
 }
 .blob2 {
   content: "";
@@ -43,8 +41,6 @@ body {
   transition: width 1s ease, height 1s ease, border-radius 0.2s ease,
     bottom 1s ease, right 1s ease;
   border-radius: var(--blbShape);
-
-
 }
 .blob3 {
   content: "";
@@ -58,7 +54,5 @@ body {
   transition: width 1s ease, height 1s ease, border-radius 0.2s ease,
     left 1s ease, top 1s ease;
   border-radius: var(--blbShape);
-
 }
-
 

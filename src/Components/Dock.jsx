@@ -5,7 +5,7 @@ import VanillaTilt from "vanilla-tilt";
 function Dock({ docItems, setDocItems, activeSlide, setActiveSlide }) {
   const dockRef = useRef();
 
-  function handleDockClick(index) {
+  async function handleDockClick(index) {
     setDocItems(
       docItems.map((item, i) => {
         return index == i
@@ -14,6 +14,8 @@ function Dock({ docItems, setDocItems, activeSlide, setActiveSlide }) {
       })
     );
     setActiveSlide(index);
+    console.log(activeSlide);
+    console.log(docItems);
   }
 
   useEffect(() => {
