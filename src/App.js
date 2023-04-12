@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "@splidejs/react-splide/css";
 import "./index.css";
 import Dock from "./Components/Dock";
@@ -7,14 +7,16 @@ import Experience from "./Pages/Experience";
 import Education from "./Pages/Education";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
-import Context from "./Context";
+import Context, { ContextStore } from "./Context";
 function App() {
+  const { activeSlide, setActiveSlide, docItems, setDocItems } =
+    useContext(ContextStore);
   const [pagesCarousal, setPagesCarousal] = useState([
     About,
     Education,
     Experience,
   ]);
-  
+
   function blbShapeGen() {
     let num = `${Math.ceil(Math.random() * 100)}% ${Math.ceil(
       Math.random() * 100
@@ -79,12 +81,7 @@ function App() {
             </SplideSlide>
           ))}
         </Splide>
-        <Dock
-          docItems={docItems}
-          setDocItems={setDocItems}
-          activeSlide={activeSlide}
-          setActiveSlide={setActiveSlide}
-        />
+        <Dock />
         <div className="blobs">
           <div className="blob1"></div>
           <div className="blob2"></div>

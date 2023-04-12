@@ -1,10 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import VanillaTilt from "vanilla-tilt";
+import { ContextStore } from "../Context";
 
-function Dock({ docItems, setDocItems, activeSlide, setActiveSlide }) {
+function Dock() {
   const dockRef = useRef();
-
+  const { activeSlide, setActiveSlide, docItems, setDocItems } =
+    useContext(ContextStore);
   async function handleDockClick(index) {
     setDocItems(
       docItems.map((item, i) => {

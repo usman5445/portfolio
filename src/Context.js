@@ -3,7 +3,13 @@ import { AiFillHome, AiFillHeart, AiFillAppstore } from "react-icons/ai";
 import { IoDocument } from "react-icons/io5";
 import { MdOutlineWork } from "react-icons/md";
 import { RiMessage3Fill } from "react-icons/ri";
-export const context = createContext();
+
+
+
+
+
+export const ContextStore = createContext();
+
 export default function Context({ children }) {
   const [activeSlide, setActiveSlide] = useState(0);
   const [docItems, setDocItems] = useState([
@@ -16,10 +22,10 @@ export default function Context({ children }) {
   ]);
 
   return (
-    <context.Provider
+    <ContextStore.Provider
       value={{ activeSlide, setActiveSlide, docItems, setDocItems }}
     >
       {children}
-    </context.Provider>
+    </ContextStore.Provider>
   );
 }
