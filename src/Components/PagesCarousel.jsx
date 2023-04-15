@@ -4,12 +4,18 @@ import Education from "../Pages/Education";
 import Experience from "../Pages/Experience";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import ContextStore from "../contextStore";
+import Projects from "../Pages/Projects";
+import Skills from "../Pages/Skills";
+import Contact from "../Pages/Contact";
 
 function PagesCarousel() {
   const [pagesCarousal, setPagesCarousal] = useState([
     About,
     Education,
     Experience,
+    Projects,
+    Skills,
+    Contact,
   ]);
   const { activeSlide, setActiveSlide, docItems, setDocItems } =
     useContext(ContextStore);
@@ -32,8 +38,6 @@ function PagesCarousel() {
     <Splide
       options={{
         type: "loop",
-        pagination: false,
-        focus: docItems.findIndex((el) => el.isActive == true),
         slideFocus: true,
       }}
       onMove={(Slide) => handleSlideChange(Slide)}

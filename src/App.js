@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="app  relative  flex h-screen w-screen items-center justify-center font-Poppins">
       <PagesCarousel />
-      <Dock />
       <BgBlobs />
     </div>
   );
