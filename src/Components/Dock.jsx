@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 
 import VanillaTilt from "vanilla-tilt";
-import { ContextStore } from "../Context";
+import ContextStore from "../contextStore";
 
 function Dock() {
   const dockRef = useRef();
-  const { activeSlide, docItems } = useContext(ContextStore);
+  const { activeSlide, setActiveSlide, docItems, setDocItems } =
+    useContext(ContextStore);
   async function handleDockClick(index) {
     setDocItems(
       docItems.map((item, i) => {
@@ -14,14 +15,11 @@ function Dock() {
           : { ...item, isActive: false };
       })
     );
-    setActiveSlide(index);
-    console.log(activeSlide);
-    console.log(docItems);
   }
 
   useEffect(() => {
     VanillaTilt.init(dockRef.current);
-  }, []);
+  }, [activeSlide, docItems]);
 
   return (
     <div
